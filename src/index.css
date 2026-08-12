@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-gradient: linear-gradient(180deg, #14202f 0%, #1c2d42 100%);
+  --font-main: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --text-primary: #f4f6f8;
+  --text-muted: #8ea3bd;
+  --accent-orange: #ff8c42;
+  --accent-orange-glow: #ffb066;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Airplane Mode Toggle UI ────────────────────────────────────────────── */
+.am-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.am-canvas-wrap {
+  width: min(560px, 100%);
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.am-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.am-bar {
+  width: min(560px, 100%);
+  margin-top: 16px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.am-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.am-label {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  color: var(--text-primary);
+}
+
+.am-status {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+}
+
+.am-toggle {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.am-toggle[aria-pressed="false"] {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.am-toggle[aria-pressed="true"] {
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-orange-glow));
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+.am-knob {
+  position: absolute;
+  top: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+  user-select: none;
+}
+
+.am-toggle[aria-pressed="false"] .am-knob {
+  left: 3px;
+}
+
+.am-toggle[aria-pressed="true"] .am-knob {
+  left: 29px;
+  transform: rotate(45deg);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(255, 140, 66, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(255, 176, 102, 0.65);
+  }
+}
