@@ -3,7 +3,7 @@
 # ✈️ AIRPLANE MODE · 3D TOGGLE
 
 <p align="center">
-  <b>A cinematic, real-time 3D Airplane Mode UI component built with React 19, Three.js & Vite</b>
+  <b>A cinematic, real-time 3D Airplane Mode UI micro-interaction built with React 19, Three.js & Vite</b>
 </p>
 
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -17,9 +17,9 @@
 
 ## 🌟 Overview
 
-**Airplane Mode 3D** is an interactive web experience that elevates a standard device toggle switch into an immersive, flight simulation sequence. 
+**Airplane Mode 3D** is an interactive, high-end web experience that elevates a standard device toggle switch into a cinematic 3D flight simulation sequence. 
 
-When toggled, a procedurally rendered propeller airplane performs a realistic runway acceleration, pitch rotation, landing gear retraction, and high-altitude climb into a day/dusk sky transition.
+When activated, a procedurally rendered modern turboprop aircraft accelerates down an asphalt runway, pitches up into a climb, retracts its landing gear, spins its 3-blade propeller at high velocity, and ascends smoothly into a dynamic dusk-to-day sky transition.
 
 ```
        _____                      
@@ -33,48 +33,75 @@ When toggled, a procedurally rendered propeller airplane performs a realistic ru
 
 ---
 
-## ✨ Key Features
+## ✨ Key 3D Features & Visual Highlights
 
-- **🛩️ Procedural 3D Airplane Mesh**: Handcrafted Three.js geometry featuring fuselage, cockpit glass, wings, engines, dual elevators, tail fin, spinning propeller, and dynamic landing gear.
-- **🌅 Dynamic Day/Dusk Lighting**: Real-time hemisphere & directional light transitions synchronized with sky fog lerping as the plane ascends.
-- **🌾 Instanced Grass Simulation**: High-performance rendering of 2,200 individual grass blades using `THREE.InstancedMesh` around a custom procedural asphalt runway texture.
-- **⚙️ Realistic Takeoff Physics & Easing**: Cubic easing curves (`easeInOutCubic`) managing throttle, ground speed, pitch elevation, roll, scale reduction, and shadow fading.
-- **🎨 Glassmorphic UI Bar**: Modern, translucent control panel with glowing neon status indicators, status text updates (`GROUNDED · STANDBY` / `TAKEOFF · CRUISING`), and smooth knob animations.
-- **🧹 Zero-Leak Memory Management**: Automatic WebGL texture, geometry, and material disposal on component unmount.
+- **🛩️ High-Fidelity Procedural Aircraft**:
+  - Aerodynamic fuselage with chrome nose spinner tip.
+  - Tinted glass canopy with realistic specular glass highlights.
+  - Swept wings with wingtip winglets and wing root fairings.
+  - Twin under-wing turboprop engines with intake nacelle rings.
+  - Tail assembly featuring a vertical fin with top accent stripe and horizontal elevators.
+  - 3-blade propeller with yellow safety tips (`propGroup`).
+  - Tricycle landing gear with hydraulic struts and rubber tires (`gearGroup`).
+
+- **☁️ Volumetric Soft Cloud Clusters**:
+  - Multi-layered atmospheric cloud formations built from overlapping smooth sphere geometries with natural diffuse shading.
+  - Continuous horizontal drift across flight background.
+
+- **🌾 Multi-Tone Instanced Grass Field**:
+  - High-performance rendering of 2,200 grass blades using `THREE.InstancedMesh`.
+  - Individual instance color variations (`#386341`, `#43754d`, `#2e5235`, `#4c8257`) creating rich terrain texture.
+
+- **🛣️ High-Resolution Asphalt Runway**:
+  - $256 \times 1024$ procedural canvas texture featuring asphalt grain, border thresholds, piano key entry bars, dashed centerlines, and touchdown skid marks.
+
+- **🌅 Cinematic Sky & Lighting System**:
+  - Real-time lighting lerp (`HemisphereLight`, `DirectionalLight` with $2048 \times 2048$ soft shadow map).
+  - Sky background and fog transition smoothly from deep dusk (`#192537`) to bright day (`#79b7e3`).
+  - Soft radial gradient contact shadow tracking aircraft position and height.
+
+- **⚙️ Takeoff Physics & Easing**:
+  - Cubic easing (`easeInOutCubic`) controlling acceleration, pitch elevation ($\theta_x$), roll ($\theta_z$), scale reduction, and camera tracking.
+
+- **🎨 Glassmorphic Control Panel**:
+  - Translucent UI bar with glowing neon status indicators (`GROUNDED · STANDBY` / `TAKEOFF · CRUISING`) and animated toggle knob.
+
+- **🧹 Zero-Leak Memory Disposal**:
+  - Full WebGL scene traversal disposing geometries, textures, and materials on unmount.
 
 ---
 
-## 🗂️ Clean Project Structure
+## 🗂️ Project Directory Structure
 
 ```ascii
 AirplaneMode/
-├── 📁 node_modules/         # Dependencies
-├── 📁 src/                  # Core application source
-│   ├── 📁 components/       # React 3D Components
-│   │   └── ✈️ AirplaneModeToggle.jsx   # Three.js Canvas & Toggle UI Logic
-│   ├── ⚛️ App.jsx           # Root Application Wrapper
-│   ├── 🎨 index.css         # Global Design Tokens & Scoped UI Styles
-│   └── 🚀 main.jsx          # React DOM Entry Point
-├── 📄 .gitignore            # Git exclusion rules
-├── 📄 .oxlintrc.json        # Fast linter configuration
-├── 📄 index.html            # Application HTML shell
-├── 📄 package.json          # Dependency specs & scripts
-├── 📄 package-lock.json     # Locked dependency versions
+├── 📁 node_modules/         # Node dependencies
+├── 📁 src/                  # Application source
+│   ├── 📁 components/       # 3D Components
+│   │   └── ✈️ AirplaneModeToggle.jsx   # 3D WebGL Canvas & Toggle UI Logic
+│   ├── ⚛️ App.jsx           # Root Component
+│   ├── 🎨 index.css         # Design Tokens & UI Styles
+│   └── 🚀 main.jsx          # Entry Point
+├── 📄 .gitignore            # Git ignore specification
+├── 📄 .oxlintrc.json        # Oxlint linter configuration
+├── 📄 index.html            # HTML Shell
+├── 📄 package.json          # Dependency list & scripts
+├── 📄 package-lock.json     # Locked dependency tree
 ├── 📄 README.md             # Project documentation
-└── ⚡ vite.config.js        # Vite bundler configuration
+└── ⚡ vite.config.js        # Vite build configuration
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack Matrix
 
-| Domain | Technology | Version | Purpose |
+| Layer | Technology | Version | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Framework** | [React](https://react.dev/) | `^19.2.8` | Component state & lifecycle management |
-| **3D Engine** | [Three.js](https://threejs.org/) | `^0.185.1` | WebGL scene, lighting, meshes & animations |
-| **Bundler** | [Vite](https://vitejs.dev/) | `^8.2.0` | Ultra-fast HMR dev server & production bundling |
-| **Styling** | Vanilla CSS3 | Custom Tokens | Sora & JetBrains Mono typography, glassmorphic UI |
-| **Linter** | [Oxlint](https://oxc.rs/) | `^1.75.0` | High-speed JavaScript & JSX linting |
+| **Framework** | [React](https://react.dev/) | `^19.2.8` | Component state & lifecycle |
+| **3D Graphics** | [Three.js](https://threejs.org/) | `^0.185.1` | WebGL scene, lighting, meshes, & shaders |
+| **Build Tool** | [Vite](https://vitejs.dev/) | `^8.2.0` | High-speed dev server & production bundler |
+| **Styling** | Vanilla CSS3 | Custom Tokens | Sora & JetBrains Mono fonts, glassmorphism |
+| **Linter** | [Oxlint](https://oxc.rs/) | `^1.75.0` | High-speed JavaScript linting |
 
 ---
 
@@ -84,7 +111,7 @@ AirplaneMode/
 
 Ensure you have [Node.js](https://nodejs.org/) (v18.0.0 or higher) installed.
 
-### Installation
+### Installation & Run
 
 1. **Clone the repository:**
    ```bash
@@ -97,41 +124,39 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.0.0 or higher) installed.
    npm install
    ```
 
-3. **Start the development server:**
+3. **Start local development server:**
    ```bash
    npm run dev
    ```
-   Open your browser at `http://localhost:5173` to experience the 3D toggle!
+   Open `http://localhost:5173` in your browser.
 
 ---
 
-## 📜 NPM Scripts Overview
+## 📜 NPM Commands
 
 | Command | Action |
 | :--- | :--- |
-| `npm run dev` | Spawns Vite development server with hot module replacement |
-| `npm run build` | Compiles optimized WebGL & React production bundle in `dist/` |
-| `npm run preview` | Serves local production build for validation |
+| `npm run dev` | Starts Vite HMR dev server |
+| `npm run build` | Builds optimized production bundle in `dist/` |
+| `npm run preview` | Previews local production build |
 | `npm run lint` | Runs `oxlint` static code analysis |
 
 ---
 
-## 🔬 Animation & Technical Mechanics
+## 🔬 Animation Physics & Formulas
 
-### Takeoff Progression Formula
-
-The takeoff sequence is driven by an interpolated progress variable $p \in [0, 1]$ using a cubic easing function:
+The takeoff progression is driven by an interpolated progress variable $p \in [0, 1]$ using cubic easing:
 
 $$f(t) = \begin{cases} 4t^3 & \text{if } t < 0.5 \\ 1 - \frac{(-2t + 2)^3}{2} & \text{if } t \ge 0.5 \end{cases}$$
 
-- **Phase 1 ($p < 0.35$):** Runway acceleration, propeller RPM increase, shadow contact tracking.
-- **Phase 2 ($p \ge 0.35$):** Pitch angle rotation ($\theta_x \to -0.28\text{ rad}$), altitude lift off, landing gear retraction ($\text{scale} \to 0$), and sky dusk-to-day transition.
+- **Ground Phase ($p < 0.35$):** Runway roll, propeller acceleration.
+- **Climb Out ($p \ge 0.35$):** Pitch rotation ($\theta_x \to -0.28\text{ rad}$), altitude lift off, landing gear retraction ($\text{scale} \to 0$), camera tracking, and sky dusk-to-day transition.
 
 ---
 
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the **MIT License**.
 
 <div align="center">
 
