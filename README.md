@@ -15,6 +15,18 @@
 
 </div>
 
+## 📸 UI Previews
+
+<div align="center">
+
+| 🛬 GROUNDED · STANDBY | 🛫 TAKEOFF · CRUISING |
+| :---: | :---: |
+| <img src="./docs/preview_grounded.png" alt="Airplane Mode Grounded State" width="420" /> | <img src="./docs/preview_takeoff.png" alt="Airplane Mode Takeoff State" width="420" /> |
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 **Airplane Mode 3D** is an interactive, high-end web experience that elevates a standard device toggle switch into a cinematic 3D flight simulation sequence. 
@@ -75,6 +87,9 @@ When activated, a procedurally rendered modern turboprop aircraft accelerates do
 
 ```ascii
 AirplaneMode/
+├── 📁 docs/                 # UI Preview Screenshots
+│   ├── 🖼️ preview_grounded.png
+│   └── 🖼️ preview_takeoff.png
 ├── 📁 node_modules/         # Node dependencies
 ├── 📁 src/                  # Application source
 │   ├── 📁 components/       # 3D Components
